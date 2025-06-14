@@ -1,0 +1,39 @@
+resources:
+  jobs:
+    thhart_dab_sql_job_code:
+      name: thhart_dab_sql_job_code
+
+      trigger:
+        periodic:
+          interval: 1
+          unit: DAYS
+      
+      email_notifications:
+        on_failure:
+          - thomas.hart@databricks.com
+
+      # ${} get set based on databricks.yml target
+      # note: using var is confusing why not variable.
+      # note: why use var for variables but bundle.target for target instead of just target?
+      parameters:
+        - name: thhart_catalog
+          default: ${var.thhart_catalog}
+        - name: thhart_schema
+          default: ${var.thhart_schema}
+        - name: bundle_target
+          default: ${bundle.target}
+
+      tasks:
+        - task_key: orders_raw
+          sql_task:
+            warehouse_id: ${var.warehouse_id}
+            file:
+              path: ./orders_raw.sql
+
+        - task_key: orders_daily
+          depends_on:
+            - task_key: orders_raw
+          sql_task:
+            warehouse_id: ${var.warehouse_id}
+            file:
+              path: ./orders_daily.sql

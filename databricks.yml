@@ -1,0 +1,39 @@
+bundle:
+  name: thhart_dab_sql
+
+# define resource location
+include:
+  - ./*.job.yml
+
+# specify variables but do not assign values
+variables:
+  warehouse_id: 
+    description: The warehouse to use
+  thhart_catalog:
+    description: The catalog to use
+  thhart_schema:
+    description: The schema to use
+
+# specify variables values in targets
+targets:
+  
+  # where do we want to develop
+  thhart_target_dev:
+    mode: development
+    default: true
+    workspace: 
+      host: https://adb-984752964297111.11.azuredatabricks.net
+    variables:
+      warehouse_id: 148ccb90800933a1
+      thhart_catalog: thhart
+      thhart_schema: dab_sql_dev
+  
+  # where do we want to run in production
+  thhart_target_prod:
+    mode: production
+    workspace: 
+      host: https://adb-984752964297111.11.azuredatabricks.net
+    variables:
+      warehouse_id: 148ccb90800933a1
+      thhart_catalog: thhart
+      thhart_schema: dab_sql_prod
