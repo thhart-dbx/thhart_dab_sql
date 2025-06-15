@@ -22,9 +22,9 @@ targets:
     mode: development
     default: true
     workspace: 
-      host: https://dbc-8c11c3b4-0a7c.cloud.databricks.com
+      host: https://dbc-446db140-571a.cloud.databricks.com/
     variables:
-      warehouse_id: e48b05b2fe0fa030
+      warehouse_id: 5a468ccc902d63ef
       thhart_catalog: thhart
       thhart_schema: dab_sql_dev
   
@@ -32,8 +32,8 @@ targets:
   thhart_target_prod:
     mode: production
     workspace: 
-      host: https://dbc-8c11c3b4-0a7c.cloud.databricks.com
+      host: https://dbc-446db140-571a.cloud.databricks.com/
     variables:
-      warehouse_id: e48b05b2fe0fa030
+      warehouse_id: 5a468ccc902d63ef
       thhart_catalog: thhart
       thhart_schema: dab_sql_prod
