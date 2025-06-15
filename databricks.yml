@@ -22,7 +22,7 @@ targets:
     mode: development
     default: true
     workspace: 
-      host: http://dbc-8c11c3b4-0a7c.cloud.databricks.com
+      host: https://dbc-8c11c3b4-0a7c.cloud.databricks.com
     variables:
       warehouse_id: e48b05b2fe0fa030
       thhart_catalog: thhart
@@ -32,7 +32,7 @@ targets:
   thhart_target_prod:
     mode: production
     workspace: 
-      host: http://dbc-8c11c3b4-0a7c.cloud.databricks.com
+      host: https://dbc-8c11c3b4-0a7c.cloud.databricks.com
     variables:
       warehouse_id: e48b05b2fe0fa030
       thhart_catalog: thhart
